@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.ahmetroid.popularmovies.BaseViewModel" />
+            type="com.ahmetroid.popularmovies.movie.MovieViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

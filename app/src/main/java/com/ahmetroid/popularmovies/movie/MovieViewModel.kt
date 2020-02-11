@@ -1,14 +1,14 @@
-package com.ahmetroid.popularmovies
+package com.ahmetroid.popularmovies.movie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ahmetroid.popularmovies.base.BaseViewModel
 import com.ahmetroid.popularmovies.data.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class BaseViewModel : ViewModel() {
+class MovieViewModel : BaseViewModel() {
 
     // TODO Get repository by constructor
     private val repository = Repository()
@@ -23,4 +23,5 @@ class BaseViewModel : ViewModel() {
             _movie.postValue(movie?.title ?: "Exception")
         }
     }
+
 }

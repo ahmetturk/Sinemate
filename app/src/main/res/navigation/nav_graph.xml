@@ -2,10 +2,9 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/baseFragment">
-
+    app:startDestination="@id/movieFragment">
     <fragment
-        android:id="@+id/baseFragment"
-        android:name="com.ahmetroid.popularmovies.BaseFragment"
-        android:label="BaseFragment" />
+        android:id="@+id/movieFragment"
+        android:name="com.ahmetroid.popularmovies.movie.MovieFragment"
+        android:label="MovieFragment" />
 </navigation>
