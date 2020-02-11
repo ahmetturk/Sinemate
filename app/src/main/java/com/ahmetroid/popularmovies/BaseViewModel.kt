@@ -3,7 +3,10 @@ package com.ahmetroid.popularmovies
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ahmetroid.popularmovies.data.Repository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class BaseViewModel : ViewModel() {
 
@@ -15,6 +18,9 @@ class BaseViewModel : ViewModel() {
         get() = _movie
 
     fun getMovie() {
-        _movie.value = repository.getMovie()
+        viewModelScope.launch(Dispatchers.IO) {
+            val movie = repository.getMovies().getOrNull(0)
+            _movie.postValue(movie?.title ?: "Exception")
+        }
     }
 }
