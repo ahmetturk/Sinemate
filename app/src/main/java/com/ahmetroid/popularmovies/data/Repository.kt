@@ -4,11 +4,14 @@ import com.ahmetroid.popularmovies.data.model.Movie
 import com.ahmetroid.popularmovies.data.network.Api.apiService
 import retrofit2.HttpException
 
+// TODO Get api service by constructor
 class Repository {
 
-    suspend fun getMovies(): List<Movie> {
+    // TODO use sealed class Resource for exposing Success, Loading, Error states
+    suspend fun getMovies(page: Int): List<Movie> {
         return try {
-            apiService.getPopularMovies("tr-TR", "1").results
+            // TODO Get language from phone's language
+            apiService.getPopularMovies("tr-TR", page.toString()).results
         } catch (e: HttpException) {
             return emptyList()
         }

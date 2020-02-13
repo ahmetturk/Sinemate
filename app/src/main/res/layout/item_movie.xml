@@ -5,23 +5,26 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.ahmetroid.popularmovies.movie.MovieViewModel" />
+            name="movie"
+            type="com.ahmetroid.popularmovies.data.model.Movie" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/movieItemParent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.movie}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/movieItemImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@{movie.title}"
+            android:scaleType="centerCrop"
+            app:image_url="@{movie.posterPath}"
+            app:layout_constraintDimensionRatio="H,2:3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
