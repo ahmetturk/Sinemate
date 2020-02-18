@@ -1,19 +1,20 @@
 package com.ahmetroid.popularmovies.data.network
 
+import com.ahmetroid.popularmovies.BuildConfig.TMDB_API_KEY
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 private const val BASE_URL = "https://api.themoviedb.org/3/"
-private const val API_KEY = "PutYourApiKeyHere"
+private const val QUERY_PARAMETER_API = "api_key"
 
 private val moshi = Moshi.Builder().build()
 
 private val okHttpClient = OkHttpClient.Builder()
     .addInterceptor { chain ->
         val httpUrl = chain.request().url().newBuilder()
-            .addQueryParameter("api_key", API_KEY)
+            .addQueryParameter(QUERY_PARAMETER_API, TMDB_API_KEY)
             .build()
 
         val request = chain.request().newBuilder()

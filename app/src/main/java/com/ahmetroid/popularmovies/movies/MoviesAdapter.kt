@@ -31,7 +31,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapterViewHolder>() {
     }
 }
 
-class MoviesAdapterViewHolder(val binding: ItemMovieBinding) :
+class MoviesAdapterViewHolder(private val binding: ItemMovieBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(movie: Movie) {

@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 private const val THRESHOLD = 2
 
 class RecyclerViewScrollListener(
-    val layoutManager: LinearLayoutManager,
-    val onLoadMore: () -> Unit
+    private val layoutManager: LinearLayoutManager,
+    private val onLoadMore: () -> Unit
 ) :
     RecyclerView.OnScrollListener() {
 
