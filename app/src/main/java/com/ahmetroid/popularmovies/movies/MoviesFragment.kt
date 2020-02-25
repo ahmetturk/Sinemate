@@ -10,12 +10,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.ahmetroid.popularmovies.R
 import com.ahmetroid.popularmovies.base.BaseFragment
 import com.ahmetroid.popularmovies.data.Repository
+import com.ahmetroid.popularmovies.data.network.Api.apiService
 import com.ahmetroid.popularmovies.databinding.FragmentMoviesBinding
 import com.ahmetroid.popularmovies.recyclerview.RecyclerViewScrollListener
 
 class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
 
-    override val viewModel by viewModels<MoviesViewModel> { MovieViewModelFactory(Repository()) }
+    override val viewModel by viewModels<MoviesViewModel> {
+        MovieViewModelFactory(Repository(apiService, getString(R.string.app_name)))
+    }
 
     override fun getLayoutResId() = R.layout.fragment_movies
 
