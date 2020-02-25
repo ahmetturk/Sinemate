@@ -38,7 +38,7 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
             })
         }
 
-        viewModel.movies.observe(this) { movies ->
+        viewModel.movies.observe(viewLifecycleOwner) { movies ->
             moviesAdapter.setList(movies)
         }
 

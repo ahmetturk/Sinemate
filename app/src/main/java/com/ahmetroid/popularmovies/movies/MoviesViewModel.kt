@@ -36,13 +36,9 @@ class MoviesViewModel(private val repository: Repository) : BaseViewModel() {
     }
 }
 
-// TODO Create generic ViewModelFactory class
-@Suppress("UNCHECKED_CAST")
-class MovieViewModelFactory(repository: Repository) : ViewModelProvider.Factory {
+class MovieViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MoviesViewModel::class.java)) {
-            return MoviesViewModel(Repository()) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
+        @Suppress("UNCHECKED_CAST")
+        return MoviesViewModel(repository) as T
     }
 }

@@ -8,5 +8,16 @@
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.ahmetroid.popularmovies.movies.MoviesFragment"
-        android:label="MovieFragment" />
+        android:label="MovieFragment">
+        <action
+            android:id="@+id/action_movieFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.ahmetroid.popularmovies.detail.DetailFragment">
+        <argument
+            android:name="movie"
+            app:argType="com.ahmetroid.popularmovies.data.model.Movie" />
+    </fragment>
 </navigation>
