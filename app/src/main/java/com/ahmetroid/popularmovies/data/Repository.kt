@@ -1,6 +1,7 @@
 package com.ahmetroid.popularmovies.data
 
 import com.ahmetroid.popularmovies.data.model.Movie
+import com.ahmetroid.popularmovies.data.model.MovieDetail
 import com.ahmetroid.popularmovies.data.network.ApiService
 import retrofit2.HttpException
 
@@ -16,6 +17,10 @@ class Repository(
         } catch (e: HttpException) {
             return emptyList()
         }
+    }
+
+    suspend fun getMovieDetail(id: String): MovieDetail {
+        return apiService.getMovieById(id)
     }
 
 }

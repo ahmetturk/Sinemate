@@ -2,4 +2,5 @@
 <resources>
     <string name="overviewLabel">Özet</string>
     <string name="language">tr-TR</string>
+    <string name="videos">Videolar</string>
 </resources>

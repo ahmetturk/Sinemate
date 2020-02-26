@@ -1,10 +1,14 @@
 package com.ahmetroid.popularmovies.detail
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,12 +16,18 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.transition.TransitionInflater
 import com.ahmetroid.popularmovies.R
 import com.ahmetroid.popularmovies.base.BaseFragment
+import com.ahmetroid.popularmovies.data.Repository
+import com.ahmetroid.popularmovies.data.network.Api.apiService
 import com.ahmetroid.popularmovies.databinding.FragmentDetailBinding
+import com.ahmetroid.popularmovies.recyclerview.HorizontalItemDecoration
 
 class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 
     override val viewModel by viewModels<DetailViewModel> {
-        DetailViewModelFactory(resources, args.movie)
+        DetailViewModelFactory(
+            resources, args.movie,
+            Repository(apiService, getString(R.string.language))
+        )
     }
 
     override fun getLayoutResId() = R.layout.fragment_detail
@@ -36,13 +46,41 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-
         binding.detailCollapsingToolbarLayout.setupWithNavController(
             binding.detailToolbar,
             findNavController(),
             AppBarConfiguration(findNavController().graph)
         )
 
+        val videosAdapter = VideosAdapter(videosAdapterListener)
+        binding.videosRecyclerView.apply {
+            adapter = videosAdapter
+            setHasFixedSize(true)
+            isNestedScrollingEnabled = false
+            addItemDecoration(HorizontalItemDecoration(resources))
+        }
+        viewModel.videos.observe(viewLifecycleOwner) { videos ->
+            videosAdapter.setList(videos)
+        }
+
         return binding.root
+    }
+
+    private val videosAdapterListener = { videoUrl: String ->
+        try {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("vnd.youtube:$videoUrl")
+                )
+            )
+        } catch (e: ActivityNotFoundException) {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.youtube.com/watch?v=$videoUrl")
+                )
+            )
+        }
     }
 }

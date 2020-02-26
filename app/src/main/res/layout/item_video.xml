@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="video"
+            type="com.ahmetroid.popularmovies.data.model.Video" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/videoCardView"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/videoImageView"
+                android:layout_width="match_parent"
+                android:layout_height="108dp"
+                android:contentDescription="@{video.name}"
+                android:scaleType="centerCrop"
+                app:image_url="@{video.image}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/videoImageView"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:paddingStart="@dimen/margin_normal"
+                android:paddingEnd="@dimen/margin_normal"
+                android:text="@{video.name}"
+                android:textAppearance="?attr/textAppearanceBody2"
+                tools:text="Video Name" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

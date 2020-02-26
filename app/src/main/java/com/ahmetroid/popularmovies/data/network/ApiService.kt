@@ -1,7 +1,9 @@
 package com.ahmetroid.popularmovies.data.network
 
-import com.ahmetroid.popularmovies.data.model.Movie
+import com.ahmetroid.popularmovies.data.model.MovieDetail
+import com.ahmetroid.popularmovies.data.model.MoviesResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -10,6 +12,9 @@ interface ApiService {
     suspend fun getPopularMovies(
         @Query("language") language: String,
         @Query("page") page: String
-    ): ApiResponse<Movie>
+    ): MoviesResponse
+
+    @GET("movie/{id}?append_to_response=videos")
+    suspend fun getMovieById(@Path("id") id: String): MovieDetail
 
 }
