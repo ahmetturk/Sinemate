@@ -74,6 +74,7 @@
                     android:layout_marginTop="@dimen/margin_normal"
                     android:contentDescription="@string/cd_movie_poster"
                     android:scaleType="centerCrop"
+                    android:transitionName="@{viewModel.posterPath}"
                     app:image_url="@{viewModel.posterPath}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.transition.TransitionInflater
 import com.ahmetroid.popularmovies.R
 import com.ahmetroid.popularmovies.base.BaseFragment
 import com.ahmetroid.popularmovies.databinding.FragmentDetailBinding
@@ -22,6 +23,12 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
     override fun getLayoutResId() = R.layout.fragment_detail
 
     private val args: DetailFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

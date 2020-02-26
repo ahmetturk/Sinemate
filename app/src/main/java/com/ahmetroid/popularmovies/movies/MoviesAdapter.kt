@@ -2,7 +2,8 @@ package com.ahmetroid.popularmovies.movies
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation.createNavigateOnClickListener
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.ahmetroid.popularmovies.data.model.Movie
 import com.ahmetroid.popularmovies.databinding.ItemMovieBinding
@@ -37,10 +38,18 @@ class MoviesAdapterViewHolder(private val binding: ItemMovieBinding) :
 
     fun bind(movie: Movie) {
         binding.movie = movie
-        binding.movieItemParent.setOnClickListener(
-            createNavigateOnClickListener(
-                MoviesFragmentDirections.actionMovieFragmentToDetailFragment(movie)
-            )
+        binding.movieItemImageView.transitionName = movie.posterPath
+
+        val transitionExtras = FragmentNavigatorExtras(
+            binding.movieItemImageView to
+                    binding.movieItemImageView.transitionName
         )
+
+        binding.movieItemParent.setOnClickListener {
+            it.findNavController().navigate(
+                MoviesFragmentDirections.actionMovieFragmentToDetailFragment(movie),
+                transitionExtras
+            )
+        }
     }
 }

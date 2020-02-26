@@ -13,6 +13,7 @@ import com.ahmetroid.popularmovies.data.Repository
 import com.ahmetroid.popularmovies.data.network.Api.apiService
 import com.ahmetroid.popularmovies.databinding.FragmentMoviesBinding
 import com.ahmetroid.popularmovies.recyclerview.RecyclerViewScrollListener
+import com.ahmetroid.popularmovies.util.waitForTransition
 
 class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
 
@@ -45,6 +46,7 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
             moviesAdapter.setList(movies)
         }
 
+        waitForTransition(binding.moviesRecyclerView)
         return binding.root
     }
 
