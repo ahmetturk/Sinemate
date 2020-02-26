@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="detail_toolbar_height">200dp</dimen>
+    <dimen name="detail_toolbar_height">220dp</dimen>
     <dimen name="detail_scrim_height">100dp</dimen>
     <dimen name="detail_poster_width">120dp</dimen>
     <dimen name="detail_poster_height">180dp</dimen>

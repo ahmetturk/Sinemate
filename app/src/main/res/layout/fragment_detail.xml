@@ -36,7 +36,7 @@
                     android:contentDescription="@string/cd_movie_poster"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
-                    app:image_url="@{viewModel.movie.backdropPath}"
+                    app:image_url="@{viewModel.backdropPath}"
                     app:layout_collapseMode="parallax" />
 
                 <View
@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
-                    app:title="@{viewModel.movie.title}"
+                    app:title="@{viewModel.title}"
                     tools:title="@string/app_name" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -74,7 +74,7 @@
                     android:layout_marginTop="@dimen/margin_normal"
                     android:contentDescription="@string/cd_movie_poster"
                     android:scaleType="centerCrop"
-                    app:image_url="@{viewModel.movie.posterPath}"
+                    app:image_url="@{viewModel.posterPath}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,7 +85,7 @@
                     android:layout_marginStart="@dimen/margin_normal"
                     android:layout_marginTop="@dimen/margin_large"
                     android:layout_marginEnd="@dimen/margin_normal"
-                    android:text="@{viewModel.movie.title}"
+                    android:text="@{viewModel.title}"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/posterImageView"
@@ -99,7 +99,7 @@
                     android:layout_marginTop="@dimen/margin_normal"
                     android:drawableStart="@drawable/ic_event_note"
                     android:drawablePadding="@dimen/margin_small"
-                    android:text="@{viewModel.movie.releaseDate}"
+                    android:text="@{viewModel.releaseDate}"
                     android:textAppearance="?attr/textAppearanceBody1"
                     app:layout_constraintStart_toStartOf="@+id/movieTitleTextView"
                     app:layout_constraintTop_toBottomOf="@+id/movieTitleTextView"
@@ -112,7 +112,7 @@
                     android:layout_marginTop="@dimen/margin_normal"
                     android:drawableStart="@drawable/ic_thumb_up"
                     android:drawablePadding="@dimen/margin_small"
-                    android:text="@{@string/vote_average_text(viewModel.movie.voteAverage)}"
+                    android:text="@{@string/vote_average_text(viewModel.voteAverage)}"
                     android:textAppearance="?attr/textAppearanceBody1"
                     app:layout_constraintStart_toStartOf="@+id/movieTitleTextView"
                     app:layout_constraintTop_toBottomOf="@+id/releaseDateTextView"
@@ -137,7 +137,7 @@
                     android:layout_marginTop="@dimen/margin_small"
                     android:layout_marginEnd="@dimen/margin_normal"
                     android:layout_marginBottom="@dimen/margin_normal"
-                    android:text="@{viewModel.movie.overview}"
+                    android:text="@{viewModel.overview}"
                     android:textAppearance="?attr/textAppearanceBody1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

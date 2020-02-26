@@ -15,10 +15,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField 'String', 'TMDB_API_KEY', "${tmdb_api_key}"
     }
+    signingConfigs {
+        config {
+            keyAlias 'android'
+            keyPassword 'android'
+            storeFile file('android.jks')
+            storePassword 'android'
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
     compileOptions {
@@ -31,14 +40,7 @@ android {
     dataBinding {
         enabled = true
     }
-    signingConfigs {
-        config {
-            keyAlias 'android'
-            keyPassword 'android'
-            storeFile file('android.jks')
-            storePassword 'android'
-        }
-    }
+
 }
 
 dependencies {

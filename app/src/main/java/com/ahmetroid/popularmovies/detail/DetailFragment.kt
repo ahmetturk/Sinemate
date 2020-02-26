@@ -15,7 +15,9 @@ import com.ahmetroid.popularmovies.databinding.FragmentDetailBinding
 
 class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 
-    override val viewModel by viewModels<DetailViewModel> { DetailViewModelFactory(args.movie) }
+    override val viewModel by viewModels<DetailViewModel> {
+        DetailViewModelFactory(resources, args.movie)
+    }
 
     override fun getLayoutResId() = R.layout.fragment_detail
 
