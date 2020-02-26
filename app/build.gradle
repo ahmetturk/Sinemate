@@ -10,7 +10,7 @@ android {
         applicationId "com.ahmetroid.popularmovies"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 12
+        versionCode 13
         versionName "2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField 'String', 'TMDB_API_KEY', "${tmdb_api_key}"
