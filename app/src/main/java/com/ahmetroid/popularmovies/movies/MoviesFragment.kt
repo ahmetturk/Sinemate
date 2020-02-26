@@ -17,7 +17,7 @@ import com.ahmetroid.popularmovies.recyclerview.RecyclerViewScrollListener
 class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
 
     override val viewModel by viewModels<MoviesViewModel> {
-        MovieViewModelFactory(Repository(apiService, getString(R.string.app_name)))
+        MovieViewModelFactory(Repository(apiService, getString(R.string.language)))
     }
 
     override fun getLayoutResId() = R.layout.fragment_movies
