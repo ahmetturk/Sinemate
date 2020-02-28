@@ -1,16 +1,13 @@
 <resources>
 
-    <style name="BaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorPrimaryVariant">@color/primaryLightColor</item>
         <item name="colorOnPrimary">@color/primaryTextColor</item>
-        <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="detailLabel">@style/detailLabelStyle</item>
     </style>
-
-    <style name="AppTheme" parent="BaseTheme" />
 
     <attr name="detailLabel" />
 
