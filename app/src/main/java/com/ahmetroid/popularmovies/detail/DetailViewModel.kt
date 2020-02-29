@@ -22,10 +22,15 @@ class DetailViewModel(resources: Resources, movie: Movie, repository: Repository
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val movieDetail = repository.getMovieDetail(movie.id)
-            _videos.postValue(movieDetail.videos.results.map {
-                it.copy(image = resources.getString(R.string.youtube_image_url, it.key))
-            })
+            try {
+                val movieDetail = repository.getMovieDetail(movie.id)
+                _videos.postValue(movieDetail.videos.results.map {
+                    it.copy(image = resources.getString(R.string.youtube_image_url, it.key))
+                })
+            } catch (e: Exception) {
+
+                // TODO Handle exception
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-package com.ahmetroid.popularmovies.data.network
+package com.ahmetroid.popularmovies.network
 
 import com.ahmetroid.popularmovies.data.model.MovieDetail
 import com.ahmetroid.popularmovies.data.model.MoviesResponse

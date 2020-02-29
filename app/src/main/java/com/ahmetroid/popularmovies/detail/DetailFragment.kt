@@ -17,8 +17,9 @@ import androidx.transition.TransitionInflater
 import com.ahmetroid.popularmovies.R
 import com.ahmetroid.popularmovies.base.BaseFragment
 import com.ahmetroid.popularmovies.data.Repository
-import com.ahmetroid.popularmovies.data.network.Api.apiService
 import com.ahmetroid.popularmovies.databinding.FragmentDetailBinding
+import com.ahmetroid.popularmovies.db.AppDatabase
+import com.ahmetroid.popularmovies.network.Api
 import com.ahmetroid.popularmovies.recyclerview.HorizontalItemDecoration
 
 class DetailFragment : BaseFragment<FragmentDetailBinding>() {
@@ -26,7 +27,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
     override val viewModel by viewModels<DetailViewModel> {
         DetailViewModelFactory(
             resources, args.movie,
-            Repository(apiService, getString(R.string.language))
+            Repository(
+                Api.apply { language = getString(R.string.language) },
+                AppDatabase.getInstance(requireContext())
+            )
         )
     }
 

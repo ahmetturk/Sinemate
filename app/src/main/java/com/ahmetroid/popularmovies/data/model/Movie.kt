@@ -1,13 +1,17 @@
 package com.ahmetroid.popularmovies.data.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
+@Entity
 @Parcelize
 @JsonClass(generateAdapter = true)
 data class Movie(
+    @PrimaryKey
     val id: String,
     val title: String,
     @Json(name = "original_title") val originalTitle: String,

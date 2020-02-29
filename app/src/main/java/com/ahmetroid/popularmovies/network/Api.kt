@@ -1,4 +1,4 @@
-package com.ahmetroid.popularmovies.data.network
+package com.ahmetroid.popularmovies.network
 
 import com.ahmetroid.popularmovies.BuildConfig.TMDB_API_KEY
 import com.squareup.moshi.Moshi
@@ -32,5 +32,6 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 object Api {
-    val apiService: ApiService by lazy { retrofit.create(ApiService::class.java) }
+    lateinit var language: String
+    val service: ApiService by lazy { retrofit.create(ApiService::class.java) }
 }
