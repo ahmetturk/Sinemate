@@ -8,6 +8,12 @@ class Converters {
     fun intListToString(list: List<Int>): String = list.joinToString()
 
     @TypeConverter
-    fun stringToIntList(value: String): List<Int> = value.split(", ").map { it.toInt() }
+    fun stringToIntList(value: String): List<Int> {
+        return if (value.isEmpty()) {
+            emptyList()
+        } else {
+            value.split(", ").map { it.toInt() }
+        }
+    }
 
 }

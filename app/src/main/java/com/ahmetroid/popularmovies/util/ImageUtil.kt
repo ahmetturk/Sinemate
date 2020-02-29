@@ -9,6 +9,6 @@ import com.bumptech.glide.Glide
 fun setImageUrl(imageView: ImageView, url: String?) {
     Glide.with(imageView)
         .load(url)
-        .error(R.drawable.error)
+        .error(R.drawable.ic_error)
         .into(imageView)
 }
