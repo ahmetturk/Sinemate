@@ -13,7 +13,6 @@ import com.ahmetroid.popularmovies.data.Repository
 import com.ahmetroid.popularmovies.databinding.FragmentMoviesBinding
 import com.ahmetroid.popularmovies.db.AppDatabase
 import com.ahmetroid.popularmovies.network.Api
-import com.ahmetroid.popularmovies.recyclerview.RecyclerViewScrollListener
 import com.ahmetroid.popularmovies.util.waitForTransition
 
 class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
@@ -43,14 +42,10 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
         binding.moviesRecyclerView.run {
             layoutManager = gridLayoutManager
             adapter = moviesAdapter
-            addOnScrollListener(RecyclerViewScrollListener(gridLayoutManager) {
-                viewModel.onLoadMore()
-            })
         }
 
         viewModel.movies.observe(viewLifecycleOwner) { movies ->
-            if (movies.isNullOrEmpty()) viewModel.onLoadMore()
-            moviesAdapter.setList(movies)
+            moviesAdapter.submitList(movies)
         }
 
         waitForTransition(binding.moviesRecyclerView)

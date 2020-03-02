@@ -1,6 +1,6 @@
 package com.ahmetroid.popularmovies.db
 
-import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -14,6 +14,6 @@ interface MoviesDao {
     fun insertAll(movies: List<Movie>)
 
     @Query("SELECT * FROM movie")
-    fun getAll(): LiveData<List<Movie>>
+    fun getAll(): DataSource.Factory<Int, Movie>
 
 }
