@@ -11,9 +11,12 @@ import com.ahmetroid.popularmovies.data.model.Movie
 interface MoviesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(movies: List<Movie>)
+    suspend fun insertAll(movies: List<Movie>)
 
-    @Query("SELECT * FROM movie")
+    @Query("SELECT * FROM Movie")
     fun getAll(): DataSource.Factory<Int, Movie>
+
+    @Query("DELETE FROM Movie")
+    suspend fun deleteAll()
 
 }
