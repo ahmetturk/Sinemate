@@ -3,4 +3,6 @@
     <string name="overviewLabel">Özet</string>
     <string name="language">tr-TR</string>
     <string name="videos">Videolar</string>
+    <string name="connection_error">Bağlantı Hatası</string>
+    <string name="retry">Yeniden Dene</string>
 </resources>

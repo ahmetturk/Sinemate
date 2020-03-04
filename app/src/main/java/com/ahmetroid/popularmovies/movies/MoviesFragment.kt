@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
+import com.ahmetroid.popularmovies.EventObserver
 import com.ahmetroid.popularmovies.R
 import com.ahmetroid.popularmovies.base.BaseFragment
 import com.ahmetroid.popularmovies.databinding.FragmentMoviesBinding
 import com.ahmetroid.popularmovies.util.waitForTransition
+import com.google.android.material.snackbar.Snackbar
 
 class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
 
@@ -39,6 +41,16 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
         viewModel.movies.observe(viewLifecycleOwner) { movies ->
             moviesAdapter.submitList(movies)
         }
+
+        viewModel.showSnackbar.observe(viewLifecycleOwner, EventObserver {
+            Snackbar.make(
+                binding.moviesCoordinatorLayout,
+                R.string.connection_error,
+                Snackbar.LENGTH_INDEFINITE
+            ).setAction(R.string.retry) {
+                viewModel.retryClicked()
+            }.show()
+        })
 
         waitForTransition(binding.moviesRecyclerView)
         return binding.root

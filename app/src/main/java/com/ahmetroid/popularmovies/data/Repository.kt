@@ -13,20 +13,19 @@ class Repository(
     private val api: Api,
     private val appDatabase: AppDatabase
 ) {
-
-    // TODO use sealed class Resource for exposing Success, Loading, Error states
-    suspend fun fetchMovies(page: Int): List<Movie> {
+    suspend fun fetchMovies(page: Int): Resource<List<Movie>> {
         return try {
             val response = api.service.getPopularMovies(api.language, page.toString())
-            response.results.map {
+            val movies = response.results.map {
                 it.copy(
                     posterPath = POSTER_URL + it.posterPath,
                     backdropPath = BACKDROP_URL + it.backdropPath,
                     page = response.page
                 )
             }
+            Resource.Success(movies)
         } catch (e: Exception) {
-            return emptyList()
+            Resource.Failure(e)
         }
     }
 
