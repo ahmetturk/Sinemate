@@ -19,3 +19,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Check this when moshi updated to 1.9.3
+-keep class kotlin.Metadata { *; }
